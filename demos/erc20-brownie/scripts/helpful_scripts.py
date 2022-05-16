@@ -4,7 +4,8 @@ from brownie import (
     config,
 )
 
-LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development","mainnet-fork","local-ganache"]
+LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "mainnet-fork", "local-ganache"]
+
 
 def get_account(index=None, id=None):
     # accounts[0]
@@ -14,7 +15,6 @@ def get_account(index=None, id=None):
         return accounts[index]
     if id:
         return accounts.load(id)
-    if (
-        network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS):
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         return accounts[0]
     return accounts.add(config["wallets"]["from_key"])
