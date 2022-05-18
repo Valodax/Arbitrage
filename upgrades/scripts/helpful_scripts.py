@@ -3,6 +3,7 @@ from brownie import (
     network,
     config,
 )
+
 import eth_utils
 
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "hardhat", "local-ganache"]
@@ -32,7 +33,7 @@ def upgrade(
     new_implementation_address,
     proxy_admin_contract=None,
     initializer=None,
-    *args
+    *args,
 ):
     transaction = None
     if proxy_admin_contract:
