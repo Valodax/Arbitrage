@@ -1,9 +1,11 @@
+A smartcontract lottery using Chainlink-vrf:
+
 1. Users can enter lottery with ETH based on a USD fee
-2. An admin will choose when the lottery is over
+2. An admin will choose when the lottery starts
 3. The lottery will select a random winner
+4. Lottery resets
 
-How do we want to test this?
-
+Testing accomplished with:
 1. `mainnet-fork`
-2. `development` with mocks
+2. `development` with mock contracts
 3. `testnet`
