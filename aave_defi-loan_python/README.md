@@ -1,8 +1,9 @@
+Python scripts
 1. Swap our ETH for WETH
 2. Deposit some ETH into AAVE
-3. Borrow some DAI with the ETH collateral
-    - Try to sell that DAI (short selling)
-4. Repay everything back
+3. Borrows some DAI with the ETH collateral deposited
+4. Repays everything back
+
 
 Testing:
 
