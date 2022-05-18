@@ -1,15 +1,21 @@
 from brownie import network, AdvancedCollectible
-import pytest
-from scripts.helpful_scripts import LOCAL_BLOCKCHAIN_ENVIRONMENTS
-from scripts.advanced_collectible.deploy_and_create import deploy_and_create
 import time
+import pytest
+from scripts.helpful_scripts import (
+    LOCAL_BLOCKCHAIN_ENVIRONMENTS,
+    get_contract,
+    get_account,
+)
+from scripts.advanced_collectible.deploy_and_create import deploy_and_create
 
 
 def test_can_create_advanced_collectible_integration():
+    # deploy the contract
+    # create an NFT
+    # get a random breed back
     # Arrange
-    # deploy the contract, create an NFT and get a random breed back
     if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
-        pytest.skip("Only for integration local testing")
+        pytest.skip("Only for integration testing")
     # Act
     advanced_collectible, creation_transaction = deploy_and_create()
     time.sleep(180)

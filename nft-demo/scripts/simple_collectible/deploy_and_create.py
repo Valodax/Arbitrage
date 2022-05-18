@@ -12,7 +12,7 @@ def deploy_and_create():
     print(
         f"Awesome, you can view your NFT at {OPENSEA_URL.format(simple_collectible.address, simple_collectible.tokenCounter() - 1)}"
     )
-    print("Please wait ~20 minutes and then hit the refresh metadata button.")
+    print("Please wait up to 20 minutes, and hit the refresh metadata button. ")
     return simple_collectible
 
 
