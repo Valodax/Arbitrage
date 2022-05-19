@@ -10,10 +10,10 @@ from brownie import (
     Contract,
 )
 
+INITIAL_PRICE_FEED_VALUE = 2000000000000000000
+
 FORKED_LOCAL_ENVIRONMENTS = ["mainnet-fork", "mainnet-fork-dev"]
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
-DECIMALS = 8
-INITIAL_VALUE = 200000000000
 
 
 def get_account(index=None, id=None):
@@ -65,7 +65,7 @@ def get_contract(contract_name):
     return contract
 
 
-def deploy_mocks(decimals=DECIMALS, initial_value=INITIAL_VALUE):
+def deploy_mocks(decimals=18, initial_value=INITIAL_PRICE_FEED_VALUE):
     account = get_account()
     MockV3Aggregator.deploy(decimals, initial_value, {"from": account})
     print("Deploying Mock DAI token")
