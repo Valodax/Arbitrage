@@ -1,5 +1,5 @@
 import React from 'react'
-import { DAppProvider, Kovan } from "@usedapp/core"
+import { ChainId, DAppProvider } from "@usedapp/core"
 import { Header } from "./components/Header"
 import { Container } from "@material-ui/core"
 import { Main } from "./components/Main"
@@ -7,7 +7,7 @@ import { Main } from "./components/Main"
 function App() {
   return (
     <DAppProvider config={{
-      networks: [Kovan],
+      supportedChains: [ChainId.Kovan],
       notifications: {
         expirationPeriod: 1000,
         checkInterval: 1000

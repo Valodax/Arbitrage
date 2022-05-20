@@ -26,14 +26,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-
 export const YourWallet = ({ supportedTokens }: YourWalletProps) => {
     const [selectedTokenIndex, setSelectedTokenIndex] = useState<number>(0)
 
     const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
         setSelectedTokenIndex(parseInt(newValue))
     }
-
     const classes = useStyles()
     return (
         <Box>
