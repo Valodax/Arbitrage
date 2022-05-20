@@ -9,7 +9,7 @@ import shutil
 KEPT_BALANCE = Web3.toWei(100, "ether")
 
 
-def deploy_token_farm_and_dapp_token(send_to_front_end=False):
+def deploy_token_farm_and_dapp_token(front_end_update=False):
     account = get_account()
     dapp_token = DappToken.deploy({"from": account})
     token_farm = TokenFarm.deploy(
@@ -21,7 +21,7 @@ def deploy_token_farm_and_dapp_token(send_to_front_end=False):
         token_farm.address, dapp_token.totalSupply() - KEPT_BALANCE, {"from": account}
     )
     tx.wait(1)
-    # platform allows 3 tokens to be staked (dapp_token, weth_token, fau_token/dai)
+    # dapp_token, weth_token, fau_token/dai
     weth_token = get_contract("weth_token")
     fau_token = get_contract("fau_token")
     dict_of_allowed_tokens = {
@@ -30,7 +30,7 @@ def deploy_token_farm_and_dapp_token(send_to_front_end=False):
         weth_token: get_contract("eth_usd_price_feed"),
     }
     add_allowed_tokens(token_farm, dict_of_allowed_tokens, account)
-    if send_to_front_end:
+    if front_end_update:
         update_front_end()
     return token_farm, dapp_token
 
@@ -47,14 +47,15 @@ def add_allowed_tokens(token_farm, dict_of_allowed_tokens, account):
 
 
 def update_front_end():
-    # send the build folder
+    # Send the build folder
     copy_folders_to_front_end("./build", "./front_end/src/chain-info")
-    # sending the front end our config file
+
+    # Sending the front end our config in JSON format
     with open("brownie-config.yaml", "r") as brownie_config:
         config_dict = yaml.load(brownie_config, Loader=yaml.FullLoader)
         with open("./front_end/src/brownie-config.json", "w") as brownie_config_json:
             json.dump(config_dict, brownie_config_json)
-    print("Front-end Updated")
+    print("Front end updated!")
 
 
 def copy_folders_to_front_end(src, dest):
@@ -64,4 +65,4 @@ def copy_folders_to_front_end(src, dest):
 
 
 def main():
-    deploy_token_farm_and_dapp_token(send_to_front_end=True)
+    deploy_token_farm_and_dapp_token(front_end_update=True)
