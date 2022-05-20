@@ -35,7 +35,7 @@ export const YourWallet = ({ supportedTokens }: YourWalletProps) => {
     const classes = useStyles()
     return (
         <Box>
-            <h1 className={classes.header}> Your Wallet! </h1>
+            <h1 className={classes.header}> My Wallet: </h1>
             <Box className={classes.box}>
                 <TabContext value={selectedTokenIndex.toString()}>
                     <TabList onChange={handleChange} aria-label="stake form tabs">
